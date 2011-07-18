@@ -102,7 +102,8 @@ function (file,           pragma,   parse) {
             var contents, pluginBuilderMatch, builderName;
 
             //Adjust the URL if it was not transformed to use baseUrl.
-            if (require.jsExtRegExp.test(moduleName)) {
+            //....And only if it's not plain js file!!
+            if (moduleName.substr(-3).toLowerCase() != ".js" && require.jsExtRegExp.test(moduleName)) {
                 url = context.config.dirBaseUrl + url;
             }
 
